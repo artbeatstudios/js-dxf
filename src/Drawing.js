@@ -459,10 +459,10 @@ class Drawing
 
 
         //OBJECTS section
-        s += '0\nSECTION\n';
-        s += '2\nOBJECTS\n';
-        s += this.dictionary.toDxfString();
-        s += '0\nENDSEC\n';
+        // s += '0\nSECTION\n';
+        // s += '2\nOBJECTS\n';
+        // s += this.dictionary.toDxfString();
+        // s += '0\nENDSEC\n';
 
 
         //close file
