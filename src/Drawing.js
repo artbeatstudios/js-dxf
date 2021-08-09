@@ -194,7 +194,7 @@ class Drawing
     drawPolyline3d(points)
     {
         points.forEach(point => {
-            if (point.length !== 3){
+            if (point.length < 3){
                 throw "Require 3D coordinate"
             }
         });

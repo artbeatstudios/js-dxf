@@ -4,7 +4,7 @@ const DatabaseObject = require('./DatabaseObject')
 class Polyline3d extends DatabaseObject
 {
     /**
-     * @param {array} points - Array of points like [ [x1, y1, z1], [x2, y2, z2]... ]
+     * @param {array} points - Array of points like [ [x1, y1, z1, bulge], [x2, y2, z2, bulge]... ]
      */
     constructor(points)
     {
@@ -35,6 +35,10 @@ class Polyline3d extends DatabaseObject
             s += `8\n${this.layer.name}\n`;
             s += `70\n0\n`;
             s += `10\n${this.points[i][0]}\n20\n${this.points[i][1]}\n30\n${this.points[i][2]}\n`;
+            // include bulge if provided
+            if(this.points[i][3]) {
+                s += `42\n${this.points[i][3]}\n`
+            }
         }
         
         s += `0\nSEQEND\n`;

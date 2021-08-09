@@ -284,7 +284,7 @@ declare module "dxf-writer" {
         drawPolyline(points: Array<Point2D>, closed?: boolean, startWidth?: number, endWidth?: number): Drawing;
 
         /**
-         * @param {array} points - Array of points like [ [x1, y1, z1], [x2, y2, z1]... ]
+         * @param {array} points - Array of points like [ [x1, y1, z1, bulge], [x2, y2, z1, bulge]... ]
          */
         drawPolyline3d(points: Array<Point3D>): Drawing;
 
