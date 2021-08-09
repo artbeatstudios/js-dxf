@@ -190,15 +190,16 @@ class Drawing
 
     /**
      * @param {array} points - Array of points like [ [x1, y1, z1], [x2, y2, z1]... ] 
+     * @param {boolean} closed - Closed polyline flag
      */
-    drawPolyline3d(points)
+    drawPolyline3d(points, closed = false)
     {
         points.forEach(point => {
             if (point.length < 3){
                 throw "Require 3D coordinate"
             }
         });
-        const p = new Polyline3d(points);
+        const p = new Polyline3d(points, closed);
         this._assignHandle(p);
         p.assignVertexHandles(this._generateHandle.bind(this))
         this.activeLayer.addShape(p);

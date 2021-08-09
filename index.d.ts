@@ -285,8 +285,9 @@ declare module "dxf-writer" {
 
         /**
          * @param {array} points - Array of points like [ [x1, y1, z1, bulge], [x2, y2, z1, bulge]... ]
+         * @param {boolean} closed - Closed polyline flag
          */
-        drawPolyline3d(points: Array<Point3D>): Drawing;
+        drawPolyline3d(points: Array<Point3D>, closed: boolean = false): Drawing;
 
         /**
          * @param {number} trueColor - Integer representing the true color, can be passed as an hexadecimal value of the form 0xRRGGBB

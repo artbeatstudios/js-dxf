@@ -5,12 +5,14 @@ class Polyline3d extends DatabaseObject
 {
     /**
      * @param {array} points - Array of points like [ [x1, y1, z1, bulge], [x2, y2, z2, bulge]... ]
+     * @param {boolean} closed - Closed polyline, default false
      */
-    constructor(points)
+    constructor(points, closed)
     {
         super(["AcDbEntity", "AcDbPolyline3D"])
         this.points = points;
         this.pointHandles = null;
+        this.closed = closed;
     }
 
     assignVertexHandles(handleProvider) {
@@ -25,6 +27,9 @@ class Polyline3d extends DatabaseObject
         s += super.toDxfString()
         s += `8\n${this.layer.name}\n`;
         s += `66\n1\n70\n8\n`;
+        if(this.closed) {
+            s += '70\n1\n';
+        }
 
         for (let i = 0; i < this.points.length; ++i)
         {
@@ -33,7 +38,7 @@ class Polyline3d extends DatabaseObject
             s += "100\nAcDbVertex\n";
             s += `5\n${this.pointHandles[i].toString(16)}\n`;
             s += `8\n${this.layer.name}\n`;
-            s += `70\n0\n`;
+            // s += `70\n0\n`;
             s += `10\n${this.points[i][0]}\n20\n${this.points[i][1]}\n30\n${this.points[i][2]}\n`;
             // include bulge if provided
             if(this.points[i][3]) {
