@@ -210,7 +210,11 @@ declare module "dxf-writer" {
         ;
 
     export default class Drawing implements RenderableToDxf {
-        constructor();
+        /**
+         * 
+         * @param layers Bypass default layer list, also sets first layer in this array as the active layer
+         */
+        constructor(layers?: Layer[]);
 
         layers: { [key: string]: Layer };
         activeLayer: Layer | null;

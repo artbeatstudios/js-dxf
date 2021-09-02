@@ -21,7 +21,7 @@ const Ellipse = require('./Ellipse');
 
 class Drawing
 {
-    constructor()
+    constructor(layers)
     {
         this.layers = {};
         this.activeLayer = null;
@@ -44,11 +44,12 @@ class Drawing
             this.addLineType(lineType.name, lineType.description, lineType.elements);
         }
 
-        for (const layer of Drawing.LAYERS) {
+        layers = layers || Drawing.LAYERS;
+        for (const layer of layers) {
             this.addLayer(layer.name, layer.colorNumber, layer.lineTypeName);
         }
 
-        this.setActiveLayer('0');
+        this.setActiveLayer(layers[0].name);
     }
 
 
