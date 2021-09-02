@@ -110,8 +110,8 @@ declare module "dxf-writer" {
         public name: string;
         public colorNumber: number;
         public lineTypeName: string;
-        public shapes: RenderableToDxf[] = [];
-        public trueColor: number = -1;
+        public shapes: RenderableToDxf[];
+        public trueColor: number;
 
         constructor(name: string, colorNumber: number, lineTypeName: string);
         toDxfString(): string;
@@ -214,7 +214,7 @@ declare module "dxf-writer" {
          * 
          * @param layers Bypass default layer list, also sets first layer in this array as the active layer
          */
-        constructor(layers?: Layer[]);
+        constructor(layers?: Array<Partial<Layer>>);
 
         layers: { [key: string]: Layer };
         activeLayer: Layer | null;
