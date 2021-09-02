@@ -12,6 +12,10 @@ npm install dxf-writer
 const Drawing = require('dxf-writer');
 const fs = require('fs');
 
+// optionally override default layers
+// const layers = [{name: 'myLayer',  colorNumber: Drawing.ACI.WHITE, lineTypeName: 'CONTINUOUS'}]
+// let d = new Drawing(layers);
+
 let d = new Drawing();
 
 d.setUnits('Decimeters');

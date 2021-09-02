@@ -110,8 +110,8 @@ declare module "dxf-writer" {
         public name: string;
         public colorNumber: number;
         public lineTypeName: string;
-        public shapes: RenderableToDxf[];
-        public trueColor: number;
+        public shapes: RenderableToDxf[] = [];
+        public trueColor: number = -1;
 
         constructor(name: string, colorNumber: number, lineTypeName: string);
         toDxfString(): string;
