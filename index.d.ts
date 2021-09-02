@@ -209,12 +209,18 @@ declare module "dxf-writer" {
         | 'WHITE'
         ;
 
+    export type LayerInput = {
+        name: string;
+        colorNumber: number;
+        lineTypeName: string;
+    }
+
     export default class Drawing implements RenderableToDxf {
         /**
          * 
          * @param layers Bypass default layer list, also sets first layer in this array as the active layer
          */
-        constructor(layers?: Array<Partial<Layer>>);
+        constructor(layers?: Array<LayerInput>);
 
         layers: { [key: string]: Layer };
         activeLayer: Layer | null;
